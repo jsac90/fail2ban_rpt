@@ -1,0 +1,41 @@
+# SSH servers
+#
+
+[sshd]
+#basic SSH ban. 3 incorrect logins and you get banned for like 10 minutes or something. 
+enabled = true
+port    = ssh
+filter = sshd
+logpath = %(sshd_log)s
+maxretry = 3
+action = %(action_m)s
+
+[ssh-repeat]
+#this jail is for permabanning people who try to log in too damn much
+#permanently bans people who get temp banned 10 times in 30 days
+enabled = true
+port = ssh
+filter = sshd
+logpath = %(sshd_log)s
+maxretry = 10
+findtime = 2592000
+bantime = -1
+action = %(action_m)s
+
+[sshd-root]
+#this jail is for permabanning anybody that tries to log in as root. F those guys. one strike you're out. 
+enabled = true
+port = ssh
+filter = sshd-root
+logpath = %(sshd_log)s
+maxretry = 1
+findtime = 2592000
+bantime = -1
+action = %(action_m)s
+
+[sshd-ddos]
+# This jail corresponds to the standard configuration in Fail2ban.
+# The mail-whois action send a notification e-mail with a whois request
+# in the body.
+port    = ssh
+logpath = %(sshd_log)s
