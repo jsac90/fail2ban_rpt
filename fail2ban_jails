@@ -1,5 +1,4 @@
 # SSH servers
-#
 
 [sshd]
 #basic SSH ban. 3 incorrect logins and you get banned for like 10 minutes or something. 
