@@ -15,7 +15,9 @@ echo ""
 echo "----------"
 echo ""
 timing=$(uptime -p | awk '{print $3}')
-if [ "$timing" == "hours," ] ||
+if 
+[ "$timing" == "hour," ] ||
+[ "$timing" == "hours," ] ||
 [ "$timing" == "minutes," ] || 
 [ "$timing" == "seconds," ];
 then
