@@ -3,6 +3,7 @@
 #I created 2 custom fail2ban jails which should be located in the repository. 
 
 #! /bin/bash
+
 { 
 echo "Here is a report for" $(date "+%A, %B %d, %Y")
 echo ""
@@ -14,12 +15,12 @@ uptime -p
 echo ""
 echo "----------"
 echo ""
-timing=$(uptime -p | awk '{print $3}')
+timing=$(uptime -p | awk '{$3}')
 if 
-[ "$timing" == "hour," ] ||
-[ "$timing" == "hours," ] ||
-[ "$timing" == "minutes," ] || 
-[ "$timing" == "seconds," ];
+[ "$timing" = "hour," ] ||
+[ "$timing" = "hours," ] ||
+[ "$timing" = "minutes," ] || 
+[ "$timing" = "seconds," ];
 then
 echo "The server was restarted less than 1 day ago. Because of the way Fail2Ban works, it will re-add ALL banned IPs after a restart, making it look like all bans happened on one day. To avoid confusion and long run times, we have decided to skip reports on these days"
 echo ""
@@ -64,6 +65,4 @@ sort
 fi
 echo ""
 #MAKE SURE YOU CHANGE THIS TO YOUR CUSTOM EMAIL ADDRESSES
-} | mail -s "Your Daily FAIL2BAN report for $(date "+%A, %B %d, %Y")" YOU@EMAIL.COM -aFrom:FAIL2BAN@SERVER.COM
- 
-
+} | mail -s "Your Daily FAIL2BAN report for $(date "+%A, %B %d, %Y")" JSAC90@GMAIL.COM  -aFrom:FAIL2BAN@LOONIKS.SERVER.COM
