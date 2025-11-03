@@ -15,4 +15,3 @@ sudo fail2ban-client status sshd
 this was a decent guide if stuff here ever stops working:
 https://linuxiac.com/how-to-protect-ssh-with-fail2ban/
 
-if you
