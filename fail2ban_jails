@@ -7,7 +7,7 @@ port    = ssh
 filter = sshd
 logpath = %(sshd_log)s
 maxretry = 3
-action = %(action_m)s
+action = %(action_)s
 
 [ssh-repeat]
 #this jail is for permabanning people who try to log in too damn much
@@ -19,7 +19,7 @@ logpath = %(sshd_log)s
 maxretry = 10
 findtime = 2592000
 bantime = -1
-action = %(action_m)s
+action = %(action_)s
 
 [sshd-root]
 #this jail is for permabanning anybody that tries to log in as root. F those guys. one strike you're out. 
@@ -30,11 +30,4 @@ logpath = %(sshd_log)s
 maxretry = 1
 findtime = 2592000
 bantime = -1
-action = %(action_m)s
-
-[sshd-ddos]
-# This jail corresponds to the standard configuration in Fail2ban.
-# The mail-whois action send a notification e-mail with a whois request
-# in the body.
-port    = ssh
-logpath = %(sshd_log)s
+action = %(action_)s
